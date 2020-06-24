@@ -1,0 +1,112 @@
+/*----BookItemButton----*/
+
+.book-item__btn{
+    cursor: pointer;
+    color: #fff;
+    border: rgb(243, 243, 243) 1px solid;
+    border-radius: .5rem;
+    background-color: #131721b7;
+    font-size: 1.3rem;
+    font-weight: 500;
+    height: 4rem;
+    width: 10rem; 
+    margin-right: 3rem;
+    transition: all .5s;
+}
+
+.book-item__btn:focus{
+    outline: none;
+}
+
+.book-item__btn:hover{
+    color: black;
+    border-color: black;
+    background-color: #61dcfb;
+}
+
+/*----DropDownButton----*/
+.dropdown-menu{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown__btn, .dropdown__option-btn{
+    background-color: #3b404b;
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    width: 15rem;
+    height: 4rem;
+    padding: .5rem;
+}
+
+.dropdown__option-btn:hover{
+    color: black;
+    background-color: #61dcfb;
+}
+
+.dropdown__option-btn:first-child{
+    border-top: .1rem solid rgba(255, 252, 252, 0.815);
+    border-bottom: .1rem solid rgba(255, 252, 252, 0.815);
+}
+
+.dropdown__btn:focus, .dropdown__option-btn:focus{
+    outline: none;
+}
+
+.dropdown__content{
+    display: none;
+    position: absolute;
+    min-width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.603) 8px 10px 10px;
+    z-index: 1;
+}
+
+.dropdown-menu:hover .dropdown__content{
+    display: block;
+}
+
+/*----ViewMoreButton----*/
+
+.btn-view{
+    background: none;
+    margin: 2.5rem;
+    color: #fff;
+    font-size: 2.25rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-view:focus{
+    outline: none;
+}
+
+.btn-view__down-arrow{
+    background-color: #fff;
+    height: 2rem;
+    width: 2rem;
+    -webkit-mask: url("../../imgs/down_arrow.svg") no-repeat center;
+    mask: url("../../imgs/down_arrow.svg") no-repeat center;
+}
+
+.btn-view:hover{
+    color: #61DBFB;
+    transform: translateY(.1rem);
+}
+
+.btn-view:hover > .btn-view__down-arrow{
+    background-color: #61DBFB;
+    animation: color-shift 3s linear .5s infinite;
+}
+
+@keyframes color-shift {
+    0%{background: linear-gradient(#fff 30%,#61DBFB 70%);}
+    25%{background: linear-gradient(#61DBFB 30%,#fff 70%);}
+    50%{background: linear-gradient(#fff 30%, #61DBFB 70%);}
+    75%{background: linear-gradient(#61DBFB 30%,#fff 70%);}
+    100%{background: linear-gradient(#fff 30%, #61DBFB 70%);}
+  }
+

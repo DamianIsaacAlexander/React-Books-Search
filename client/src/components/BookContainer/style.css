@@ -1,0 +1,31 @@
+.book-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+
+.book-container__header-rule{
+    width: 100%;
+    border-bottom: rgba(255, 252, 252, 0.815) 2px solid;
+    box-shadow: rgba(0, 0, 0, 0.603) 8px 10px 10px;
+}
+
+.book-container__header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+
+}
+
+.book-container__header-title{
+    color: #fff;
+    font-size: 3.5rem;
+    margin-bottom: 0;
+}
