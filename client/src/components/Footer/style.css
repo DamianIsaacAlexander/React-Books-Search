@@ -1,7 +1,6 @@
 .footer{
-    background-color: #222831;
-    flex-shrink: 0;
-    box-shadow: inset 0px 10px 10px;
+    background-color: #363540;
+    box-shadow: inset rgba(0, 0, 0, 0.603) 0px 10px 10px;
 }
 
 .footer__text{

@@ -9,9 +9,10 @@ const Nav = (props) => {
                     <a className="nav__list-link" href="/">Search</a>
                 </li>
                 <li className="nav__list-item">
-                    <a className="nav__list-link" href="/">Library</a>
+                    <a className="nav__list-link" href="/library">Library</a>
                 </li>
             </ul>
+            {props.children}
         </nav>
     );
 }

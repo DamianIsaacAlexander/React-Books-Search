@@ -1,20 +1,25 @@
 .header-container{
+    background-color:#363540;
+    padding: 2rem;
+    position: relative;
+    margin: 0 0 6rem;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.603) 0px 10px 10px;
 }
 
 .header__banner{
-    display: flex;
+  display: flex;
 }
 
 .header__logo{
-    height: 10rem;
+  align-self: center;
+    height: 5rem;
 }
 
 .header__text{
-    font-size: 8rem;
+    font-size: 4rem;
     color: #fff;
 }
 

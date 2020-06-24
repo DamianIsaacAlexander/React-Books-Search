@@ -1,12 +1,12 @@
 nav{
-    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .nav__list{
+    margin-bottom: 0;
     display: flex;
-    align-items: center;
     font-size: 3rem;
     list-style: none;
 }
@@ -19,18 +19,6 @@ nav{
     color: #61DBFB
 }
 
-.form__input{
-    font-size: 1rem;
-    padding: .7rem 1rem;
-    border-radius: 1rem;
-    border: none;
-    height: 2rem;
-    width: 50%;
-    margin-top: .5rem;
-}
-form{
-    display: flex;
-}
-.form__input:focus{
-    outline: none;
+.nav__list-item{
+    margin-right: 5rem;
 }
