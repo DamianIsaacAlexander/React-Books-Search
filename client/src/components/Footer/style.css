@@ -1,4 +1,5 @@
 .footer{
+    z-index: 10;
     background-color: #363540;
     box-shadow: inset rgba(0, 0, 0, 0.603) 0px 10px 10px;
 }

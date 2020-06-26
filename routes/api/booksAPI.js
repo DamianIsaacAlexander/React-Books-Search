@@ -7,11 +7,11 @@ router.route("/")
   .get(booksController.findAll)
   .post(booksController.create);
 // Matches with "/api/books/:id"
-router.route("/search/:query")
+router.route("/search/:query/:index")
   .get((req, res) => {
-      axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.query}&startIndex=${0}&maxResults=10`)
-      .then(books => res.json(books.data.items))
-      .catch(err => res.send(err));
+      axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.query}&startIndex=${req.params.index}&maxResults=10`)
+        .then((books) => {res.json(books.data.items)})
+        .catch(() => {res.status(404)});
   });
 // Matches with "/api/books/:id"
 router

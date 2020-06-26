@@ -1,4 +1,5 @@
 .book-item{
+    width: 100%;
     color: #fff;
     background-color: #494f5daf;
     display: flex;
@@ -17,22 +18,23 @@
     margin-left: 1.8rem;
  }
 
-.book-item__description p{
-   margin-bottom: .5rem;
+.book-item__synopsis{
+    margin-bottom: .5rem;
 }
 
 .book-item__title{
     font-size: 2.5rem;
 }
 
-.book-item__synopsis{
-    font-size: 1.6rem;
-}
-
 .book-item__author{
     font-size: 2rem;
 }
 
+.book-item__publish-info{
+    font-size: 1.6rem;
+}
 
-
+.book-item__synopsis{
+    font-size: 1.6rem;
+}
 

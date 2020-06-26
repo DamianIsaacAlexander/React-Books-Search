@@ -21,7 +21,14 @@
 .book-item__btn:hover{
     color: black;
     border-color: black;
+}
+
+.book-item__btn.btn-hover-blue:hover{
     background-color: #61dcfb;
+}
+
+.book-item__btn.btn-hover-red:hover{
+    background-color: #ff0000de;
 }
 
 /*----DropDownButton----*/
