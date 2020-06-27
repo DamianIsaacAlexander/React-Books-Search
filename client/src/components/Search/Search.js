@@ -19,6 +19,8 @@ const Search = (props) => {
                 className="search__input" 
                 placeholder="Search for a book." 
                 ref={inputRef}
+                value={props.currentInputVal}
+                onChange={(e) => {props.setCurrentInputVal(e.target.value)}}
             />
         </form>
     );

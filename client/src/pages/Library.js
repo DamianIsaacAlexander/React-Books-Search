@@ -16,14 +16,20 @@ const BookSearch = () => {
     const initalState = {books: []};
     const [state, dispatch] = useReducer(bookReducer, initalState);
     const [searchQuery, setSearchQuery] = useState("");
-    const [deletedBook, setDeletedBook] = useState(false);
+    const [currentInputVal, setCurrentInputVal] = useState("");
 
     const handleClick = (id) => {
         API.deleteBook(id).then(() => {
             dispatch({type: "clearOne", id: id});
         });
     }
-    
+
+    useEffect(() => {
+       
+        dispatch({type: "sortByInput", input: currentInputVal});
+        
+    }, [currentInputVal]);
+
     useEffect(() => {
         API.getBooks().then(({data}) => {dispatch({type: "setBooks", payload: data})});
     }, [])
@@ -34,6 +40,8 @@ const BookSearch = () => {
                 <Header>
                     <Nav>
                         <Search 
+                            currentInputVal={currentInputVal}
+                            setCurrentInputVal={setCurrentInputVal}
                             searchQuery={searchQuery} 
                             setSearchQuery={setSearchQuery} 
                         />
@@ -43,7 +51,7 @@ const BookSearch = () => {
                     {state.books.map((book) => {
                         return (
                             <BookItem book={book}>
-                                 <a target="_blank" href={book.infoLink}><BookItemButton hover="btn-hover-blue" name="View"/></a>
+                                 <a  rel="noopener noreferrer" target="_blank" href={book.infoLink}><BookItemButton hover="btn-hover-blue" name="View"/></a>
                                  <BookItemButton hover="btn-hover-red" name="Delete" handleClick={() => {handleClick(book._id)}}></BookItemButton>
                             </BookItem>
                         );

@@ -1,3 +1,5 @@
+let previousState = [];
+
 const sortByDate = (state) => {
     const books = state.books.volumeInfo ? state.books.volumeInfo : state.books;
     return books.sort((a, b) => {
@@ -21,16 +23,31 @@ const sortByTitle = (state) => {
 }
 
 const clearOne = (state, id) => {
-    return state.books.filter((book) => {
+    const updatedState = state.books.filter((book) => {
         return book._id !== id;
-    })
+    });
+    previousState = updatedState;
+    return updatedState;
+}
+
+
+function sortByInput(term) {
+    if(term){
+        return previousState.filter(book => {
+            const title = book.title.toLowerCase();
+            return title.includes(term.toLowerCase());
+        });
+    } else {
+        return previousState
+    }
 }
 
 const bookReducer = (state, action) => {
     switch(action.type){
-        case "setBooks": return {books: [...state.books,...action.payload]};
+        case "setBooks": previousState = action.payload; return {books: [...state.books,...action.payload]};
         case "clear": return {books: []};
         case "clearOne": return {books: clearOne(state, action.id)};
+        case "sortByInput": return {books: sortByInput(action.input)}
         case "sortByDate": return {books: sortByDate(state)};
         case "sortByTitle": return {books: sortByTitle(state)};
         default: return state;

@@ -16,7 +16,7 @@ const BookItem = ({children, book}) => {
     return  (
         <div className="book-item">
        
-            <img className="book-item__img" src={imageLinks ? imageLinks.thumbnail : unavailbeIMGURL}></img>
+            <img className="book-item__img" src={imageLinks ? imageLinks.thumbnail : unavailbeIMGURL} alt={title}></img>
             <div className="book-item__description">
                 <p className="book-item__title">{title ? title : "N/A"}</p>
                 <p className="book-item__author">

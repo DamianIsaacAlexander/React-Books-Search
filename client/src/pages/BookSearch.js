@@ -9,8 +9,11 @@ import BookContainer from "../components/BookContainer/BookContainer";
 import BookItem from "../components/BookItem/BookItem";
 import BookItemButton from "../components/Buttons/BookItemButton";
 import ViewMoreButton from "../components/Buttons/ViewMoreButton";
+import SavedItemCard from "../components/SavedItemCard/SavedItemCard";
 import bookReducer from "../hooks/bookReducer";
-
+import io from "socket.io-client";
+let socket;
+let setTimer;
 const BookSearch = () => {
     
     const initalState = {books: []};
@@ -18,6 +21,9 @@ const BookSearch = () => {
     const [state, dispatch] = useReducer(bookReducer, initalState);
     const [searchQuery, setSearchQuery] = useState("");
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentInputVal, setCurrentInputVal] = useState("");
+    const [showItem, setShowItem] = useState({show: false, title: ""})
+    const [lastTitle, setLastTitle] = useState("");
 
     const handleClick = (book) => {
 
@@ -33,9 +39,32 @@ const BookSearch = () => {
            infoLink: infoLink,
            imageLinks: imageLinks,
         }
+        if(lastTitle !== title){
+            API.saveBook(newBook).then(() => {setLastTitle(title)})
+        }
        
-        API.saveBook(newBook);
     };
+
+    useEffect(()  => {
+        socket = io("http://localhost:3000/")
+        return () => {
+            socket.disconnect(); 
+        }
+    }, [])
+
+    useEffect(() => {
+        socket.emit("saved", lastTitle);
+        socket.on("showSavedCard", (title) => {
+            if(title){
+                clearTimeout(setTimer);
+                setShowItem({show: true, title: title});
+                setTimer = setTimeout(() => {setShowItem({show: false, title: ""})}, 2000);
+            }
+        });
+        return () => {
+            socket.off();
+        }
+    }, [lastTitle])
 
     useEffect(() => {
         if(searchQuery){
@@ -46,7 +75,7 @@ const BookSearch = () => {
         } 
         setCurrentIndex(resultStartingIndex);
         dispatch({type: "clear"})
-    }, [searchQuery])
+    }, [searchQuery]);
 
     useEffect(() => {
         if(currentIndex > resultStartingIndex){
@@ -60,9 +89,12 @@ const BookSearch = () => {
     return (
         <Fragment>
             <Wrapper>
+                {showItem.show && <SavedItemCard title={showItem.title}/>}
                 <Header>
                     <Nav>
-                        <Search 
+                        <Search
+                            currentInputVal={currentInputVal}
+                            setCurrentInputVal={setCurrentInputVal}
                             searchQuery={searchQuery} 
                             setSearchQuery={setSearchQuery} 
                         />
@@ -72,7 +104,7 @@ const BookSearch = () => {
                     {state.books.map((book) => {
                         return (
                             <BookItem book={book} key={book.id}>
-                                <a target="_blank" href={book.volumeInfo.infoLink}><BookItemButton hover="btn-hover-blue" name="View"/></a>
+                                <a  rel="noopener noreferrer" target="_blank" href={book.volumeInfo.infoLink}><BookItemButton hover="btn-hover-blue" name="View"/></a>
                                 <BookItemButton hover="btn-hover-blue" name="Save" handleClick={() => {handleClick(book)}}/>
                             </BookItem>
                         );
