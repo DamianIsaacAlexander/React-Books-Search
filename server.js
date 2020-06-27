@@ -2,9 +2,8 @@ const express = require("express");
 const socketio = require("socket.io");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const mainSocket = require("./sockets/mainSocket");
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
