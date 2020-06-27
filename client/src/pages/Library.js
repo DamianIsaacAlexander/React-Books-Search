@@ -50,7 +50,7 @@ const BookSearch = () => {
                 <BookContainer containerTitle="Library" dispatch={dispatch}>
                     {state.books.map((book) => {
                         return (
-                            <BookItem book={book}>
+                            <BookItem book={book} key={book._id}>
                                  <a  rel="noopener noreferrer" target="_blank" href={book.infoLink}><BookItemButton hover="btn-hover-blue" name="View"/></a>
                                  <BookItemButton hover="btn-hover-red" name="Delete" handleClick={() => {handleClick(book._id)}}></BookItemButton>
                             </BookItem>

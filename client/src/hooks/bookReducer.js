@@ -1,18 +1,18 @@
 let previousState = [];
 
 const sortByDate = (state) => {
-    const books = state.books.volumeInfo ? state.books.volumeInfo : state.books;
+    const books = state.books.map(book => {return book.volumeInfo ? book.volumeInfo : book});
     return books.sort((a, b) => {
         if(a.publishedDate > b.publishedDate){
             return -1 
         } else {
             return 1
         }
-    }); 
+    });
 }
 
 const sortByTitle = (state) => {
-    const books = state.books.volumeInfo ? state.books.volumeInfo : state.books;
+    const books = state.books.map(book => {return book.volumeInfo ? book.volumeInfo : book});
     return books.sort((a, b) => {
         if(a.title > b.title){
             return 1 

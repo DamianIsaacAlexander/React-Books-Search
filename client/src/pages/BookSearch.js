@@ -27,7 +27,7 @@ const BookSearch = () => {
 
     const handleClick = (book) => {
 
-        const {authors, publisher, publishedDate, title, imageLinks, description, infoLink} = book.volumeInfo;
+        const {authors, publisher, publishedDate, title, imageLinks, description, infoLink} = book.volumeInfo ? book.volumeInfo : book;
 
         const newBook = {
            id: book.id,
@@ -101,10 +101,14 @@ const BookSearch = () => {
                     </Nav>
                 </Header>
                 <BookContainer containerTitle="Results" dispatch={dispatch}>
-                    {state.books.map((book) => {
+                    {state.books.map((book, index) => {
                         return (
-                            <BookItem book={book} key={book.id}>
-                                <a  rel="noopener noreferrer" target="_blank" href={book.volumeInfo.infoLink}><BookItemButton hover="btn-hover-blue" name="View"/></a>
+                            <BookItem book={book} key={index}>
+                                <a  rel="noopener noreferrer" 
+                                    target="_blank" 
+                                    href={book.volumeInfo ? book.volumeInfo.infoLink : book.infoLink}>
+                                    <BookItemButton hover="btn-hover-blue" name="View"/>
+                                </a>
                                 <BookItemButton hover="btn-hover-blue" name="Save" handleClick={() => {handleClick(book)}}/>
                             </BookItem>
                         );
