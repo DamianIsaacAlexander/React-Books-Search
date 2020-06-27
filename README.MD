@@ -8,7 +8,7 @@ This application allows a user to look up books, and save them to a library to v
  * Sort books by title or published date.
  * Search for books in the library by title.
 
-![app demo](https://ibb.co/C9hQjWn)
+![app demo](https://i.ibb.co/FYgzQnB/Untitled.png)
 
 ## Built With
 * React
