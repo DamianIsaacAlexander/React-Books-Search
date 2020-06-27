@@ -17,7 +17,7 @@ This application allows a user to look up books, and save them to a library to v
 * Axios
 * Socket.io
 * Javascript
-
+* GoogleBooksAPI
 ## Deployment
 
 https://googlebooksreactapplication.herokuapp.com/
