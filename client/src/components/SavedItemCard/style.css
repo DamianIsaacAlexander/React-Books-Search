@@ -1,0 +1,18 @@
+.saved-card{
+    z-index: 10;
+    bottom: 10rem;
+    right: 10rem;
+    position: fixed;
+}
+
+.saved-card__title{
+    box-shadow: #0000009a 8px 10px 10px;
+    color: #ffffff;
+    background-color: #363540;
+    padding: 1.5rem;
+    font-size: 2rem;
+}
+
+.saved-card span {
+    color: rgb(28, 209, 28);
+}
